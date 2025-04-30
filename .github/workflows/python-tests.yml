@@ -1,0 +1,17 @@
+name: "Backend Tests - PyTest"
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  pytest-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install --upgrade pip && pip install -r requirements.txt
+      - run: pip install pytest
+      - run: pytest tests/ --maxfail=1 --disable-warnings -q
