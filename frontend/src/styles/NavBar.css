@@ -1,0 +1,31 @@
+
+.comic-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #2296DD, #FFBC00);
+  padding: 1rem 2rem;
+  border-bottom: 4px solid black;
+}
+.comic-navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.comic-navbar li a {
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.3);
+}
+.comic-navbar li a.active {
+  background: black;
+  color: #FFBC00;
+}
+.logo-title {
+  font-family: 'Bangers', cursive;
+  font-size: 1.8rem;
+  color: white;
+}

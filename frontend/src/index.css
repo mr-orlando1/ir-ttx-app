@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Agio style tweaks */
+body {
+  @apply font-sans bg-surf text-white;
+}

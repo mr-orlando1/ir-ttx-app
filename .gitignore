@@ -1,0 +1,29 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.env
+*.sqlite3
+venv/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# IDEs
+.vscode/
+.idea/
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/.cache/
+
+# Logs
+*.log

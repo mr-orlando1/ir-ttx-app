@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+.comic-background {
+  background: radial-gradient(circle at top left, #FFBC00, #FF3833, #2296DD, #12A04B);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  padding: 2rem;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.comic-title {
+  font-family: 'Bangers', cursive;
+  color: black;
+  text-shadow: 3px 3px white;
+}
+
+.comic-heading {
+  font-family: 'Bangers', cursive;
+  color: black;
+}
+
+.comic-panel {
+  background: white;
+  border: 5px solid black;
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 8px 8px 0px #000;
+}
+
+.comic-button {
+  background: #FF3833;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: 3px solid black;
+  transition: transform 0.2s;
+}
+
+.comic-button:hover {
+  transform: scale(1.1);
+}
+
+.comic-input {
+  border: 2px solid black;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.comic-bubble {
+  background: #fff;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+  position: relative;
+  font-family: 'Bangers', cursive;
+}
+
+.comic-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: black;
+}
