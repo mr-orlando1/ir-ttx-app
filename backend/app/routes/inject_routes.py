@@ -29,9 +29,9 @@ def suggest_inject():
         openai.api_key = os.getenv("OPENAI_API_KEY")
         messages = [{
             "role": "user",
-            "content": (
-                """Generate a tabletop inject for:\nScenario: {}\nPhase: {}""".format(scenario, phase)
-            ),
+            "content": f"Generate a tabletop inject for:
+Scenario: {scenario}
+Phase: {phase}"
         }]
         response = openai.ChatCompletion.create(model="gpt-4", messages=messages)
         output = response.choices[0].message.content

@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
+import './DarkModeToggle.css';
 
 function DarkModeToggle() {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(() => localStorage.getItem('theme') === 'dark');
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle('dark', dark);
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    root.classList.add('theme-transition');
+    setTimeout(() => root.classList.remove('theme-transition'), 500);
+  }, [dark]);
 
   return (
-    <div className="flex items-center space-x-2">
-      <span className="text-sm text-gray-700">{dark ? 'Dark' : 'Light'} Mode</span>
-      <button
-        onClick={() => setDark(!dark)}
-        className={`w-10 h-6 flex items-center bg-gray-300 rounded-full p-1 duration-300 ease-in-out ${dark ? 'justify-end' : 'justify-start'}`}
-      >
-        <div className="bg-white w-4 h-4 rounded-full shadow-md"></div>
-      </button>
-    </div>
+    <button className="comic-button flip-toggle" onClick={() => setDark(!dark)}>
+      {dark ? "🌞 Light Mode" : "🌙 Dark Mode"}
+    </button>
   );
 }
 
