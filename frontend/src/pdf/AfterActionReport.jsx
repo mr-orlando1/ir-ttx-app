@@ -1,5 +1,5 @@
 import React from 'react';
-import {
+import { Image, View, 
   Document, Page, Text, View, StyleSheet, Font
 } from '@react-pdf/renderer';
 
@@ -47,7 +47,10 @@ export default function AfterActionReport({ injects = [], feedback = {} }) {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <Text style={styles.header}>After Action Report</Text>
+        <Image src="/assets/legal-awareness-banner.png" style={{ height: 60, marginBottom: 8 }} />
+<Text style={styles.header}>After Action Report</Text>
+<Text style={{ marginBottom: 6, fontSize: 12, color: "#444" }}>Control Coverage Summary</Text>
+<Image src="coverage-heatmap-placeholder.png" style={{ height: 200, marginBottom: 16 }} />
 
         {injects.map((inj, i) => (
           <View key={i} style={styles.section}>
@@ -70,7 +73,8 @@ export default function AfterActionReport({ injects = [], feedback = {} }) {
           <Text style={styles.title}>Corrective Action Plan (CAP)</Text>
           <Text style={styles.row}>[Insert notes, recommendations, and follow-up actions here.]</Text>
         </View>
-      </Page>
+      <Image src="/assets/security-awareness-logo.png" style={{ height: 40, marginTop: 12 }} />
+</Page>
     </Document>
   );
 }

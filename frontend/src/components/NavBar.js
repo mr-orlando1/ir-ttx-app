@@ -15,7 +15,9 @@ const NavBar = () => {
         <li><NavLink to="/resources">📚 Resources</NavLink></li>
         <li><NavLink to="/settings">⚙️ Settings</NavLink></li>
         <li><NavLink to="/admin">🛡️ Admin</NavLink></li>
-      </ul>
+        <li><NavLink to="/live" className={({ isActive }) => isActive ? "text-blue-600" : ""}>Live Execution</NavLink></li>
+  <li><NavLink to="/dashboard" className={({ isActive }) => isActive ? "text-blue-600" : ""}>Dashboard</NavLink></li>
+</ul>
     </nav>
   );
 };

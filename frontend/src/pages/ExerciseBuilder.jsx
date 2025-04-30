@@ -48,6 +48,9 @@ export default function ExerciseBuilder() {
   };
 
   return (
+    <div className="mb-6">
+      <CoverageHeatmap injects={injects} />
+    </div>
     <div className="p-6 space-y-4">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-semibold">Exercise Builder</h1>
@@ -99,6 +102,7 @@ export default function ExerciseBuilder() {
             </div>
           {/* Feedback Panel */}
 <InjectFeedback injectId={inj.id} onSave={(id, feedback) => console.log("Inject", id, feedback)} />
+<CapWizard mapping={inj.mappings?.[0] || "PR.AC-1"} onSave={(k, v) => console.log("CAP saved", k, v)} />
 </CardContent>
         </Card>
       ))}
