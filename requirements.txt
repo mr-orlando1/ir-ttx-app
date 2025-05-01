@@ -4,4 +4,4 @@ Flask-SQLAlchemy
 Flask-SocketIO
 eventlet
 flask-login
-flask-cors==4.0.0
+flask-cors==5.0.1
