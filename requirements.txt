@@ -1,7 +1,0 @@
-Flask
-Flask-CORS
-Flask-SQLAlchemy
-Flask-SocketIO
-eventlet
-flask-login
-flask-cors==4.0.0

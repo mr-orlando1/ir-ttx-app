@@ -1,0 +1,5 @@
+
+    from .api.participants import bp as participants_bp
+    from .api.injects import bp as injects_bp
+    app.register_blueprint(participants_bp)
+    app.register_blueprint(injects_bp)

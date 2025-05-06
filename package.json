@@ -2,8 +2,15 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": [
+        "*"
+      ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ],
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
 }

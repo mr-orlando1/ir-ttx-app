@@ -1,11 +1,39 @@
-version: '3.8'
 services:
-  ir-ttx-app:
-    build: .
-    ports:
-      - "5000:5000"
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     environment:
-      - FLASK_ENV=development
-      - PYTHONUNBUFFERED=1
+      FLASK_ENV: development
+      PYTHONUNBUFFERED: 1
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@db/postgres
     volumes:
-      - .:/app
+      - ./backend:/app
+    depends_on:
+      - db
+    ports:
+      - "4100:4100"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata:

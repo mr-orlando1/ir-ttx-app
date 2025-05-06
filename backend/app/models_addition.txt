@@ -1,0 +1,13 @@
+
+
+class Participant(db.Model):
+    __tablename__ = 'participants'
+    id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    name = db.Column(db.String(120), nullable=False)
+    role = db.Column(db.String(80), nullable=False)
+
+class Inject(db.Model):
+    __tablename__ = 'injects'
+    id = db.Column(db.String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    time = db.Column(db.String(40), nullable=False)
+    content = db.Column(db.Text, nullable=False)

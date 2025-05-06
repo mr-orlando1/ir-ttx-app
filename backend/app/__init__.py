@@ -1,14 +1,32 @@
+
 from flask import Flask
-from .socketio_events import socketio, start_background_risk_feed
+from .extensions import db, login_manager, socketio
+from flask_migrate import Migrate
+import os
 
 def create_app():
-    app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'secret!'
+    app = Flask(__name__, instance_relative_config=False)
 
-    @app.route('/api/ping')
-    def ping():
-        return {'status': 'IR TTX API is live!'}
+    # Config
+    app.config.from_object('config.Config')
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    start_background_risk_feed()
+    # Initialise extensions
+    db.init_app(app)
+    migrate = Migrate(app, db)
+    login_manager.init_app(app)
     socketio.init_app(app)
+
+    # Blueprints / routes
+    from .routes import register_routes
+    register_routes(app)
+
+    # SocketIO background tasks
+    from .socketio_events import register_socket_events
+    register_socket_events(socketio)
+
+    @app.route('/health')
+    def health():
+        return {"status": "ok"}
+
     return app

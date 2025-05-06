@@ -1,11 +1,29 @@
-version: '3.8'
+# ── docker-compose.yml ──────────────────────────────────────────────
 services:
-  ir-ttx-app:
-    build: .
-    ports:
-      - "5000:5000"
+  backend:
+    build:
+      context: ./backend        # <─ looks for backend/Dockerfile
     environment:
-      - FLASK_ENV=development
-      - PYTHONUNBUFFERED=1
+      FLASK_ENV: development
+      PYTHONUNBUFFERED: 1
+      DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@db/postgres
+    depends_on: [db]
+    ports: ["4100:4100"]        # API on localhost:4100
+
+  frontend:
+    build:
+      context: ./frontend       # <─ looks for frontend/Dockerfile
+    ports: ["3000:80"]          # React app served by Nginx → http://localhost:3000
+    depends_on: [backend]
+
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - .:/app
+      - pgdata:/var/lib/postgresql/data
+    ports: ["5432:5432"]
+
+volumes:
+  pgdata:

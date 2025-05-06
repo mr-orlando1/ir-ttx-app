@@ -1,23 +1,12 @@
-from flask_socketio import SocketIO
-import random
 import time
-import threading
+import random
 
-socketio = SocketIO(cors_allowed_origins="*")
-
-def emit_risk_updates():
+def emit_risk_updates(socketio):
     messages = [
-        "New alert: Unauthorized login attempt 🚨",
-        "Compliance check passed ✅",
-        "Risk score updated: Moderate 🔄",
-        "New claim filed by Acme Corp 📝",
-        "Security audit flagged 2 issues 🛡️",
+        {"severity": "low", "message": "Firewall updated"},
+        {"severity": "medium", "message": "Login attempt detected"},
+        {"severity": "high", "message": "Ransomware signature triggered"}
     ]
     while True:
-        socketio.emit('risk_update', random.choice(messages))
-        time.sleep(10)  # send every 10 seconds
-
-def start_background_risk_feed():
-    thread = threading.Thread(target=emit_risk_updates)
-    thread.daemon = True
-    thread.start()
+        socketio.emit("risk_update", random.choice(messages))
+        time.sleep(5)

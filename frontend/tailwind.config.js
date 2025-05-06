@@ -1,22 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}"
-  ],
+  darkMode: 'class',
+  content: ['./src/**/*.{js,jsx,ts,tsx,html}'],
   theme: {
     extend: {
-      colors: {
-        black: "#000000",
-        white: "#FFFFFF",
-        glacier: "#2296DD",
-        blaze: "#FF3833",
-        soleil: "#FFBC00",
-        surf: "#2B3C48"
+      keyframes: {
+        ripple: {
+          '0%': { transform: 'scale(0)', opacity: '0.5' },
+          '100%': { transform: 'scale(4)', opacity: '0' },
+        },
+        focusRing: {
+          '0%': { boxShadow: '0 0 0 0 rgba(59, 130, 246, 0.5)' },
+          '100%': { boxShadow: '0 0 0 4px rgba(59, 130, 246, 0)' },
+        },
       },
-      fontFamily: {
-        sans: ["Montserrat", "sans-serif"]
-      }
+      animation: {
+        ripple: 'ripple 0.6s linear',
+        focusRing: 'focusRing 1s ease-out',
+      },
     },
   },
   plugins: [],
-}
+};
