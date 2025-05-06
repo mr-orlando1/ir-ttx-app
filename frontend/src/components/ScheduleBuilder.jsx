@@ -53,6 +53,13 @@ export default function ScheduleBuilder({ injects = [], onScheduleChange }) {
     onScheduleChange(updatedInjects);
   };
 
+  const ExportButtons = ({ scheduledInjects }) => (
+    <div className="flex justify-end gap-4 mt-4">
+      <Button onClick={() => exportSchedule(scheduledInjects)} className="bg-blue-600 text-white px-4 py-2 rounded">Download Schedule (JSON)</Button>
+      <Button onClick={() => exportScheduleCSV(scheduledInjects)} className="bg-green-600 text-white px-4 py-2 rounded">Download Schedule (CSV)</Button>
+    </div>
+  );
+
   return (
     <div className="p-6 space-y-4">
       <h2 className="text-xl font-bold">Exercise Schedule Builder</h2>
@@ -84,7 +91,7 @@ export default function ScheduleBuilder({ injects = [], onScheduleChange }) {
       <div className="flex justify-end gap-4 mt-4">          <Button onClick={() => exportSchedule(scheduledInjects)} className="bg-blue-600 text-white px-4 py-2 rounded">Download Schedule (JSON)</Button>          <Button onClick={() => exportScheduleCSV(scheduledInjects)} className="bg-green-600 text-white px-4 py-2 rounded">Download Schedule (CSV)</Button>        </div>        </div>        
       <div className="flex justify-end gap-4 mt-4">          <Button onClick={() => exportSchedule(scheduledInjects)} className="bg-blue-600 text-white px-4 py-2 rounded">Download Schedule (JSON)</Button>        
       <div className="flex justify-end gap-4 mt-4">          <Button onClick={() => exportSchedule(scheduledInjects)} className="bg-blue-600 text-white px-4 py-2 rounded">Download Schedule (JSON)</Button>          <Button onClick={() => exportScheduleCSV(scheduledInjects)} className="bg-green-600 text-white px-4 py-2 rounded">Download Schedule (CSV)</Button>        </div>        </div>        
-      <div className="flex justify-end gap-4 mt-4">          <Button onClick={() => exportSchedule(scheduledInjects)} className="bg-blue-600 text-white px-4 py-2 rounded">Download Schedule (JSON)</Button>          <Button onClick={() => exportScheduleCSV(scheduledInjects)} className="bg-green-600 text-white px-4 py-2 rounded">Download Schedule (CSV)</Button>        </div>        </div>
+      <ExportButtons scheduledInjects={scheduledInjects} />
     <div className="mt-6 space-y-4">          <h3 className="text-lg font-semibold">Timeline View</h3>          <div className="flex gap-4 overflow-x-auto py-4 border-t">            {scheduledInjects.map((inj, index) => (              <div key={inj.id} className="flex-shrink-0 w-48 bg-gray-100 p-4 rounded text-center">                <p className="font-semibold">{inj.title}</p>                <p className="text-sm text-gray-600">{inj.time ? `T+${inj.time}` : "Unscheduled"}</p>              
       <div className="flex justify-end gap-4 mt-4">          <Button onClick={() => exportSchedule(scheduledInjects)} className="bg-blue-600 text-white px-4 py-2 rounded">Download Schedule (JSON)</Button>        
       <div className="flex justify-end gap-4 mt-4">          <Button onClick={() => exportSchedule(scheduledInjects)} className="bg-blue-600 text-white px-4 py-2 rounded">Download Schedule (JSON)</Button>          <Button onClick={() => exportScheduleCSV(scheduledInjects)} className="bg-green-600 text-white px-4 py-2 rounded">Download Schedule (CSV)</Button>        </div>        </div>        

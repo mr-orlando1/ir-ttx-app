@@ -1,29 +1,17 @@
 
+# Node / React
+node_modules
+frontend/build
+
 # Python
 __pycache__/
-*.py[cod]
-*.env
-*.sqlite3
+*.pyc
 venv/
-ENV/
 
-# Distribution / packaging
-build/
-dist/
-*.egg-info/
-
-# Docker
+# Environment
+.env
+.DS_Store
 *.log
-docker-compose.override.yml
 
-# IDEs
-.vscode/
-.idea/
-
-# Frontend
-frontend/node_modules/
-frontend/build/
-frontend/.cache/
-
-# Logs
-*.log
+# Docker artifacts
+*.db

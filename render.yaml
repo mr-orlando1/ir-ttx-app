@@ -1,0 +1,13 @@
+
+services:
+  - type: web
+    name: ir-ttx-app
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: FLASK_ENV
+        value: development
+      - key: POSTGRES_PASSWORD
+        value: yourStrongPassword
